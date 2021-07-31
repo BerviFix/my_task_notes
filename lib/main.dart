@@ -59,6 +59,52 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void onDaySelected(BuildContext context, Day day) {
+    showBottomSheet(
+        context: context,
+        builder: (_) {
+          return Container(
+              width: double.infinity,
+              color: Colors.grey.shade200,
+              padding: EdgeInsets.all(16),
+              child: Container(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ListTile(
+                      contentPadding: EdgeInsets.all(0),
+                      title: Text(
+                        day.nr.toString(),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                      subtitle: Text(months[_selectedMonthIndex].name),
+                    ),
+                    SizedBox(
+                      height: 32,
+                    ),
+                    TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Write a note here!',
+                      ),
+                    ),
+                    SizedBox(
+                      height: 32,
+                    ),
+                    MaterialButton(
+                        minWidth: double.infinity,
+                        height: 40,
+                        onPressed: () {},
+                        child: Text('Submit note'),
+                        color: Colors.limeAccent,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5))),
+                  ],
+                ),
+              ));
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,6 +118,10 @@ class _HomePageState extends State<HomePage> {
             return Card(
               elevation: 2,
               child: ListTile(
+                onTap: () {
+                  onDaySelected(
+                      context, months[_selectedMonthIndex].days![index]);
+                },
                 title: Text(
                   months[_selectedMonthIndex].days![index].nr.toString(),
                 ),
