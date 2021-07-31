@@ -66,6 +66,20 @@ class _HomePageState extends State<HomePage> {
         title: Text('Calendar'),
         centerTitle: true,
       ),
+      body: ListView.builder(
+          itemCount: months[_selectedMonthIndex].days!.length,
+          itemBuilder: (context, index) {
+            return Card(
+              elevation: 2,
+              child: ListTile(
+                title: Text(
+                  months[_selectedMonthIndex].days![index].nr.toString(),
+                ),
+                subtitle: Text(
+                    months[_selectedMonthIndex].days![index].task ?? 'No Task'),
+              ),
+            );
+          }),
       drawer: Container(
         width: 300,
         color: Colors.white,
