@@ -60,12 +60,16 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       day.task = task;
     });
+
+    Navigator.of(context).pop();
   }
 
   void onMonthSelected(int index) {
     setState(() {
       _selectedMonthIndex = index;
     });
+
+    Navigator.of(context).pop();
   }
 
   void onDaySelected(BuildContext context, Day day) {
