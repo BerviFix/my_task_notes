@@ -71,6 +71,17 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
+                    MaterialButton(
+                      onPressed: () {},
+                      minWidth: 50,
+                      height: 5,
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      splashColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                    ),
                     ListTile(
                       contentPadding: EdgeInsets.all(0),
                       title: Text(
