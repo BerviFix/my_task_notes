@@ -51,7 +51,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final TextEditingController _taskController = TextEditingController();
   int _selectedMonthIndex = 0;
+
+  void onNoteSubmit(Day day) {
+    String task = _taskController.text.trim();
+
+    setState(() {
+      day.task = task;
+    });
+  }
 
   void onMonthSelected(int index) {
     setState(() {
@@ -95,6 +104,7 @@ class _HomePageState extends State<HomePage> {
                       height: 32,
                     ),
                     TextField(
+                      controller: _taskController,
                       decoration: InputDecoration(
                         hintText: 'Write a note here!',
                       ),
@@ -105,7 +115,9 @@ class _HomePageState extends State<HomePage> {
                     MaterialButton(
                         minWidth: double.infinity,
                         height: 40,
-                        onPressed: () {},
+                        onPressed: () {
+                          onNoteSubmit(day);
+                        },
                         child: Text('Submit note'),
                         color: Colors.limeAccent,
                         shape: RoundedRectangleBorder(
