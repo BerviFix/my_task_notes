@@ -59,6 +59,7 @@ class _HomePageState extends State<HomePage> {
 
     setState(() {
       day.task = task;
+      _taskController.clear();
     });
 
     Navigator.of(context).pop();
