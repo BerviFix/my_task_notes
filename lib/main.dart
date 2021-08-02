@@ -140,9 +140,12 @@ class _HomePageState extends State<HomePage> {
         title: Text('Calendar'),
         centerTitle: true,
       ),
-      body: ListView.builder(
-          itemCount: months[_selectedMonthIndex].days!.length,
-          itemBuilder: (context, index) {
+      body: Builder(
+        builder: (context) => GridView.count(
+          crossAxisCount: 2,
+          childAspectRatio: 1,
+          children:
+              List.generate(months[_selectedMonthIndex].days!.length, (index) {
             return Card(
               elevation: 2,
               child: ListTile(
@@ -158,6 +161,8 @@ class _HomePageState extends State<HomePage> {
               ),
             );
           }),
+        ),
+      ),
       drawer: Container(
         width: 300,
         color: Colors.white,
